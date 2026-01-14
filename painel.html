@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>⚙️ Gestão da Loja</h1>
+        
+        <div class="card">
+            <h3>🆕 Cadastrar Produto</h3>
+            <input type="text" id="p-nome" placeholder="Nome do Produto">
+            <input type="number" id="p-preco" placeholder="Preço R$">
+            <input type="number" id="p-estoque" placeholder="Qtd em Estoque">
+            <input type="text" id="p-foto" placeholder="Nome da foto (ex: blusa.jpg)">
+            <button onclick="cadastrarProduto()" class="btn-add">💾 Salvar Produto</button>
+        </div>
+
+        <div class="card faturamento-card">
+            <h2 id="faturamento-total">Faturamento Geral: R$ 0,00</h2>
+        </div>
+
+        <div class="card">
+            <h3>📜 Vendas Realizadas</h3>
+            <div id="historico-vendas"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
