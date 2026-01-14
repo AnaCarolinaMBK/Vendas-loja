@@ -3,39 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vendas - Minha Loja</title>
+    <title>Vendas - Carrinho</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>💰 Registro de Vendas</h1>
+        <h1>🛍️ Nova Venda</h1>
         
         <div class="card">
-            <form id="venda-form">
-                <input type="text" id="produto" placeholder="Produto" required>
+            <h3>Adicionar Itens</h3>
+            <div class="form-group">
+                <input type="text" id="produto" placeholder="Nome do Produto">
                 <div class="row">
-                    <input type="number" id="qtd" placeholder="Qtd" required>
-                    <input type="number" id="valor" step="0.01" placeholder="Preço R$" required>
+                    <input type="number" id="qtd" placeholder="Qtd" value="1">
+                    <input type="number" id="valor" step="0.01" placeholder="Preço Unit. R$">
                 </div>
-                <button type="submit" class="btn-venda">Registrar Venda</button>
-            </form>
+                <button onclick="adicionarAoCarrinho()" class="btn-add">➕ Adicionar ao Carrinho</button>
+            </div>
+        </div>
+
+        <div class="card" id="card-carrinho" style="display:none;">
+            <h3>🛒 Carrinho Atual</h3>
+            <ul id="itens-carrinho"></ul>
+            <hr>
+            <div class="total-carrinho">Total: <span id="subtotal-venda">R$ 0,00</span></div>
+            <button onclick="finalizarVenda()" class="btn-venda">✅ Confirmar Venda Total</button>
         </div>
 
         <div class="card">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Item</th>
-                        <th>Total</th>
-                        <th>Data</th>
-                    </tr>
-                </thead>
-                <tbody id="lista-vendas"></tbody>
-            </table>
-            <div class="total">
-                Faturamento: <span id="faturamento">R$ 0,00</span>
-            </div>
-            <button onclick="exportarSheets()" class="btn-sheets">📊 Exportar para Sheets</button>
+            <h3>📜 Histórico de Vendas</h3>
+            <div id="historico-lista"></div>
+            <button onclick="exportarSheets()" class="btn-sheets">📊 Baixar para Sheets</button>
         </div>
     </div>
     <script src="script.js"></script>
