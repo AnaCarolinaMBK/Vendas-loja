@@ -1,33 +1,22 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel Administrativo</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <h1>⚙️ Gestão da Loja</h1>
-        
-        <div class="card">
-            <h3>🆕 Cadastrar Produto</h3>
-            <input type="text" id="p-nome" placeholder="Nome do Produto">
-            <input type="number" id="p-preco" placeholder="Preço R$">
-            <input type="number" id="p-estoque" placeholder="Qtd em Estoque">
-            <input type="text" id="p-foto" placeholder="Nome da foto (ex: blusa.jpg)">
-            <button onclick="cadastrarProduto()" class="btn-add">💾 Salvar Produto</button>
+<div class="container">
+    <h2>⚙️ Gestão de Estoque Profissional</h2>
+    <div style="background: white; padding: 15px; border-radius: 10px; margin-bottom: 20px;">
+        <input type="text" id="p-nome" placeholder="Nome do Produto" style="width: 93%; padding: 10px; margin-bottom: 10px;">
+        <input type="number" id="p-preco" placeholder="Preço de Venda R$" style="width: 93%; padding: 10px; margin-bottom: 10px;">
+        <div style="display: flex; gap: 10px;">
+            <input type="number" id="p-loja" placeholder="Qtd Loja" style="width: 45%; padding: 10px;">
+            <input type="number" id="p-reserva" placeholder="Qtd Reserva" style="width: 45%; padding: 10px;">
         </div>
-
-        <div class="card faturamento-card">
-            <h2 id="faturamento-total">Faturamento Geral: R$ 0,00</h2>
-        </div>
-
-        <div class="card">
-            <h3>📜 Vendas Realizadas</h3>
-            <div id="historico-vendas"></div>
-        </div>
+        <input type="text" id="p-foto" placeholder="Nome da foto (ex: blusa.jpg)" style="width: 93%; padding: 10px; margin: 10px 0;">
+        <button onclick="cadastrarProduto()" style="width: 100%; padding: 12px; background: #000; color: white; border: none; border-radius: 5px;">Adicionar ao Inventário</button>
     </div>
-    <script src="script.js"></script>
-</body>
-</html>
+
+    <h3>📊 Resumo de Estoques</h3>
+    <table>
+        <thead>
+            <tr> <th>Item</th> <th>Loja</th> <th>Reserva</th> <th>Ação</th> </tr>
+        </thead>
+        <tbody id="tabela-comparativa"></tbody>
+    </table>
+</div>
+<script src="script.js"></script>
