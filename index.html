@@ -3,41 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Vendas Profissional</title>
+    <title>Minha Loja Online</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>🛍️ Nova Venda</h1>
+        <h1>👗 Nossa Coleção</h1>
+        <div class="vitrine" id="vitrine-cliente"></div>
         
-        <div class="card">
-            <h3>Adicionar Itens</h3>
-            <div class="form-group">
-                <input type="text" id="produto" placeholder="Nome do Produto">
-                <div class="row">
-                    <input type="number" id="qtd" placeholder="Qtd" value="1">
-                    <input type="number" id="valor" step="0.01" placeholder="Preço Unit. R$">
-                </div>
-                <button onclick="adicionarAoCarrinho()" class="btn-add">➕ Adicionar ao Carrinho</button>
-            </div>
-        </div>
-
-        <div class="card" id="card-carrinho" style="display:none;">
-            <h3>🛒 Carrinho Atual</h3>
-            <ul id="itens-carrinho"></ul>
-            <hr>
-            <div class="total-carrinho">Total: <span id="subtotal-venda">R$ 0,00</span></div>
-            <button onclick="finalizarVenda()" class="btn-venda">✅ Confirmar Venda Total</button>
-        </div>
-
-        <div class="card faturamento-card">
-            <h2 id="faturamento-total">Faturamento Geral: R$ 0,00</h2>
-        </div>
-
-        <div class="card">
-            <h3>📜 Histórico de Vendas</h3>
-            <div id="historico-lista"></div>
-            <button onclick="exportarSheets()" class="btn-sheets">📊 Baixar para Sheets</button>
+        <div class="card" id="carrinho-cliente">
+            <h3>🛒 Seu Carrinho</h3>
+            <ul id="lista-pedido"></ul>
+            <div class="total-carrinho">Total: <span id="total-pedido">R$ 0,00</span></div>
+            <input type="text" id="nome-cliente" placeholder="Seu Nome">
+            <input type="text" id="endereco-cliente" placeholder="Seu Endereço">
+            <button onclick="enviarWhatsApp()" class="btn-venda" style="background:#25d366">📱 Enviar Pedido</button>
         </div>
     </div>
     <script src="script.js"></script>
