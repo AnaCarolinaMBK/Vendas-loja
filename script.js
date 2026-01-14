@@ -11,7 +11,6 @@ function adicionarAoCarrinho() {
     carrinho.push({ item, qtd, valor, subtotal: qtd * valor });
     atualizarInterfaceCarrinho();
     
-    // Limpa campos para o próximo item
     document.getElementById('produto').value = '';
     document.getElementById('valor').value = '';
 }
@@ -24,7 +23,7 @@ function atualizarInterfaceCarrinho() {
 
     if (carrinho.length > 0) card.style.display = 'block';
 
-    carrinho.forEach((p, index) => {
+    carrinho.forEach((p) => {
         soma += p.subtotal;
         lista.innerHTML += `<li>${p.qtd}x ${p.item} <span>R$ ${p.subtotal.toFixed(2)}</span></li>`;
     });
@@ -39,10 +38,10 @@ function finalizarVenda() {
         total: carrinho.reduce((acc, p) => acc + p.subtotal, 0)
     };
 
-    historicoVendas.unshift(vendaFinal); // Adiciona no topo da lista
+    historicoVendas.unshift(vendaFinal); 
     localStorage.setItem('vendas_loja', JSON.stringify(historicoVendas));
     
-    carrinho = []; // Limpa o carrinho
+    carrinho = []; 
     document.getElementById('card-carrinho').style.display = 'none';
     mostrarHistorico();
     alert("Venda registrada com sucesso!");
@@ -51,16 +50,24 @@ function finalizarVenda() {
 function mostrarHistorico() {
     const div = document.getElementById('historico-lista');
     div.innerHTML = '';
+    let faturamentoAcumulado = 0; // Nova variável para somar tudo
     
     historicoVendas.forEach(v => {
+        faturamentoAcumulado += v.total;
         div.innerHTML += `
             <div class="venda-bloco">
                 <strong>Data: ${v.data}</strong><br>
                 ${v.itens.map(i => `${i.qtd}x ${i.item}`).join(', ')}<br>
-                <strong>Total: R$ ${v.total.toFixed(2)}</strong>
+                <strong>Total da Venda: R$ ${v.total.toFixed(2)}</strong>
             </div>
         `;
     });
+
+    // Atualiza o Faturamento Geral na tela
+    const faturamentoTela = document.getElementById('faturamento-total');
+    if (faturamentoTela) {
+        faturamentoTela.innerText = `Faturamento Geral: R$ ${faturamentoAcumulado.toFixed(2)}`;
+    }
 }
 
 function exportarSheets() {
