@@ -1,20 +1,24 @@
-body { font-family: sans-serif; background: #f0f2f5; padding: 15px; margin: 0; }
-.container { max-width: 450px; margin: auto; }
-.card { background: white; padding: 15px; border-radius: 12px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-input { width: 100%; padding: 12px; margin: 5px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 16px; }
-.row { display: flex; gap: 10px; }
-button { width: 100%; border: none; padding: 14px; border-radius: 8px; font-weight: bold; cursor: pointer; color: white; margin-top: 5px; }
+:root { --primaria: #000; --venda: #27ae60; --reserva: #2980b9; }
+body { font-family: 'Segoe UI', sans-serif; background: #f8f9fa; margin: 0; }
+.container { padding: 15px; max-width: 600px; margin: auto; }
 
-.btn-add { background: #3498db; }
-.btn-venda { background: #27ae60; font-size: 18px; }
-.btn-sheets { background: #7f8c8d; }
+/* Vitrine em Grade */
+.vitrine { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+.produto-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); position: relative; }
+.produto-card img { width: 100%; height: 150px; object-fit: cover; }
+.info { padding: 10px; text-align: center; }
+.preco { color: var(--venda); font-weight: bold; font-size: 1.1rem; }
 
-#itens-carrinho { list-style: none; padding: 0; }
-#itens-carrinho li { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #eee; }
+/* Botão de Marcar */
+.btn-selecionar { width: 100%; padding: 8px; border: none; background: #eee; cursor: pointer; font-weight: bold; }
+.btn-selecionar.ativo { background: var(--primaria); color: white; }
 
-.total-carrinho { font-size: 24px; font-weight: bold; text-align: center; margin: 15px 0; color: #27ae60; background: #eafaf1; padding: 10px; border-radius: 8px; }
-.faturamento-card { border-top: 5px solid #27ae60; background: #fff; }
-#faturamento-total { margin: 0; color: #27ae60; font-size: 22px; text-align: center; }
+/* Carrinho Flutuante */
+#carrinho-flutuante { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); 
+    background: var(--venda); color: white; padding: 12px 25px; border-radius: 30px; font-weight: bold; z-index: 999; }
 
-.venda-bloco { background: #f9f9f9; padding: 12px; border-radius: 8px; margin-bottom: 10px; border-left: 5px solid #e67e22; font-size: 14px; position: relative; }
-.btn-excluir { width: auto; background: #e74c3c; padding: 5px 10px; margin: 0; font-size: 12px; }
+/* Tabela do Painel */
+table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; }
+th, td { padding: 12px; border-bottom: 1px solid #eee; text-align: left; }
+.col-venda { color: var(--venda); font-weight: bold; }
+.col-reserva { color: var(--reserva); font-weight: bold; }
