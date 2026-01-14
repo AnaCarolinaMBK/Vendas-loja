@@ -50,23 +50,30 @@ function finalizarVenda() {
 function mostrarHistorico() {
     const div = document.getElementById('historico-lista');
     div.innerHTML = '';
-    let faturamentoAcumulado = 0; // Nova variável para somar tudo
+    let faturamentoAcumulado = 0; 
     
-    historicoVendas.forEach(v => {
+    historicoVendas.forEach((v, index) => {
         faturamentoAcumulado += v.total;
         div.innerHTML += `
             <div class="venda-bloco">
-                <strong>Data: ${v.data}</strong><br>
-                ${v.itens.map(i => `${i.qtd}x ${i.item}`).join(', ')}<br>
-                <strong>Total da Venda: R$ ${v.total.toFixed(2)}</strong>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <strong>📅 ${v.data}</strong>
+                    <button onclick="excluirVenda(${index})" class="btn-excluir">❌ Apagar</button>
+                </div>
+                <p style="margin: 10px 0;">${v.itens.map(i => `${i.qtd}x ${i.item}`).join(', ')}</p>
+                <strong>💰 Total: R$ ${v.total.toFixed(2)}</strong>
             </div>
         `;
     });
 
-    // Atualiza o Faturamento Geral na tela
-    const faturamentoTela = document.getElementById('faturamento-total');
-    if (faturamentoTela) {
-        faturamentoTela.innerText = `Faturamento Geral: R$ ${faturamentoAcumulado.toFixed(2)}`;
+    document.getElementById('faturamento-total').innerText = `Faturamento Geral: R$ ${faturamentoAcumulado.toFixed(2)}`;
+}
+
+function excluirVenda(index) {
+    if (confirm("Deseja realmente excluir esta venda do histórico? Isso alterará seu faturamento total.")) {
+        historicoVendas.splice(index, 1);
+        localStorage.setItem('vendas_loja', JSON.stringify(historicoVendas));
+        mostrarHistorico();
     }
 }
 
@@ -80,7 +87,7 @@ function exportarSheets() {
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'vendas_detalhadas.csv';
+    a.download = 'relatorio_vendas.csv';
     a.click();
 }
 
