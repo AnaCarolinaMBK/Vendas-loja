@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendas - Minha Loja</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>💰 Registro de Vendas</h1>
+        
+        <div class="card">
+            <form id="venda-form">
+                <input type="text" id="produto" placeholder="Produto" required>
+                <div class="row">
+                    <input type="number" id="qtd" placeholder="Qtd" required>
+                    <input type="number" id="valor" step="0.01" placeholder="Preço R$" required>
+                </div>
+                <button type="submit" class="btn-venda">Registrar Venda</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Total</th>
+                        <th>Data</th>
+                    </tr>
+                </thead>
+                <tbody id="lista-vendas"></tbody>
+            </table>
+            <div class="total">
+                Faturamento: <span id="faturamento">R$ 0,00</span>
+            </div>
+            <button onclick="exportarSheets()" class="btn-sheets">📊 Exportar para Sheets</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
